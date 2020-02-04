@@ -1,0 +1,159 @@
+\documentclass[a4paper, 12px]{report}
+
+\usepackage{cmap}% поиск в PDF
+\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+
+\usepackage{xcolor}
+
+\usepackage{hyperref}
+
+
+
+\usepackage{graphicx}
+
+\graphicspath{{./images/}}
+
+
+\author{ \href{https://github.com/mrzlanx532}{mrzlanx532}}
+\title{All experience}
+\date{\today}
+
+\begin{document}
+	
+\maketitle
+
+\tableofcontents{}
+\clearpage 
+
+\chapter{Git commands}
+
+\section{Git common's commands}
+
+
+\textbf{git help <команда>}\\открывает документацию по команде\\\\
+\textbf{git init}\\инициализация git-репозитория
+
+
+\section{Git config}
+
+\textbf{git config -\--global core.editor *редактор кода*}\\ установка стандартного редактора кода\\\\
+\textbf{git config -\--list}\\список всех настроек локально (или глобально -\--global)\\\\
+\textbf{git config -\--global alias.co checkout}\\создание краткого алияса (команда checkout будет выполняться через команду "co")\\\\
+\textbf{git config -\--global alias.co 'checkout -b'}\\создание краткого алияса "co"\ c параметрами\\\\
+\textbf{git config core.fileMode false}\\выключить отслеживания за ПРАВАМИ ФАЙЛА
+
+\section{Git status}
+
+\textbf{git status}\\проверка на существование измененных файлов\\\\
+\textbf{git status -s (-\--short)}\\краткий вывод состояния файлов
+
+\section{Git add}
+
+\textbf{git add *}\\Добавить все файлы в индексацию\\\\
+\textbf{git add <file>}\\Добавить <file> в индексацию
+
+\section{Git clone}
+
+\textbf{git clone https://github.com/libgit2/libgit2.git}
+\\клонирование репозитория\\\\
+\textbf{git clone <url>}\\клонировать репозиторий\\\\
+\textbf{git clone -o <локальное\_название\_источника>}\\склонировать репозиторий, и дать источнику имя <локальное\_название\_источника>
+
+\section{Git diff}
+
+\textbf{git diff}\\посмотреть изменение файлов в консоли до индексации\\\\
+\textbf{git diff -\--cached}\\покажет проиндексированные изменения\\\\
+\textbf{git diff -\--staged}\\что из проиндексированного войдет в следующий коммит, воспользуйтесь командой
+
+\section{Git log}
+
+
+\textbf{git log}\\показать все последние коммиты\\\\
+\textbf{git log -p}\\показать все последние коммиты с изменениями\\\\
+\textbf{git log -p -1}\\показать 1 последний коммит с изменениями\\\\
+\textbf{git log -\--stat}\\показать все коммиты с измененными файлами кратко\\\\
+\textbf{git log -\--pretty=oneline}\\показ комитов с описанием\\\\
+\textbf{gitlog -\--graph}\\удобное представление логов\\\\
+\textbf{git log -\--relative-date}\\относительная дата коммита (35 минут назад)
+
+\section{Git branch}
+
+\textbf{git branch -d <имя\_ветки>}\\Удалить локальную ветку\\\\
+\textbf{git branch <имя\_локальной\_ветки>}\\создать локальную ветку\\\\
+\textbf{git branch -d <имя\_ветки>}\\удалить локальную ветку\\\\
+\textbf{git branch -u <удаленная\_ветка>}\\начать отслеживать удаленную ветку с текущей\\\\
+\textbf{git branch -vv}\\показать информацию о ветках и за чем они следят
+
+\section{Git remote}
+
+\textbf{git remote -v}\\посмотреть подключенный удаленный источник\\\\
+\textbf{git remote add <локальное\_название\_источника> <url>}\\добавить новый источник\\\\
+\textbf{git remote rename <старое\_имя\_уд.\_реп> <новое\_имя\_уд.\_реп>}\\переименовать удаленный источник\\\\
+\textbf{git remote rm <имя\_уд.\_реп>}\\удалить ссылку на удаленный реп
+
+\section{Git stash}
+
+\textbf{git stash}\\убрать в стэш изменения\\\\\\
+\textbf{git stash list}\\показать список изменений в стэшэ\\\\
+\textbf{git stash pop}\\вытащить из стэша (и удалить из стэка стэша) последние изменения\\\\
+\textbf{git stash apply}\\вытащить последние изменения (но не удалять из стэка стэша) спрятаннные в стэш\\\\
+\textbf{git stash list | pop stash@\{0\}}\\вытащить по порядковому номеру изменения из стэша\\\\
+\textbf{git stash drop stash@\{0\}}\\удалить из стэка стэша изменения у последнего коммита\\\\
+\textbf{git stash -\--keep-index}\\убрать в стэш только непроиндексированные файлы (красные)\\\\
+\textbf{git stash -u}\\скрыть файлы в стэш, включая те, которые не находятся в индексации\\\\
+\textbf{git stash show stash@\{0\}}\\
+показать файлы в последнем стеше
+
+\section{Git merge\textbackslash mergetool}
+
+\textbf{git merge <название\_ветки>}\\слить текущую ветку с <название\_ветки>\\\\
+\textbf{git merge -\--abort}\\отменить слияние (например при конфликте)\\\\
+\textbf{git merge -\--no-commit -\--squash featureB}\\-\--squash - сливает изменения в один коммит, не являющийся коммитом слияния\\
+-\--no-commit - отменяет автоматическую запись коммита\\\\
+\textbf{git mergetool}\\открыть редактор по умолчанию для разрешения конфликта\\\\
+\textbf{git mergetool -\--tool=<название\_утилиты>}\\открыть редактор <редактор> для разрешения конфлита
+
+\section{Git rm\textbackslash mv}
+
+\textbf{git rm <файл>}\\удаляет файл и вносит в индексацию `удаление` этого файла\\\\
+\textbf{git rm -\--cached <файл>}\\удаляет из индекса, но физически не удаляет его\\\\\\
+\textbf{git mv <изначальный\_файл> <новое\_название\_файла>}\\
+переименование с индексацией
+
+\section{Git checkout}
+
+\textbf{git checkout <имя\_ветки>}\\переключится на ветку\\\\
+\textbf{git checkout -b <имя\_новой\_ветки>}\\создать ветку и переключится на нее\\\\
+\textbf{git checkout -\-- <файл>}\\Вернуть <файл> к дефолту. (Убрать внесенные изменения)
+
+\section{Git others}
+
+\textbf{git push origin -\--delete <имя\_ветки>}\\Удалить ветку из удаленного репозитория\\\\
+\textbf{git commit -a}\\пропуск индексирования и сразу коммит\\\\
+\textbf{git commit -\--amend}\\слияние текущего коммита с предыдущим\\\\
+\textbf{git reset HEAD <имя\_файла>}\\убрать из индексирования файл\\\\
+\textbf{git fetch <локальное\_название\_источника>}\\скачать без слияния\\\\ 
+\textbf{git pull <локальное\_название\_источника>}\\скачать со слиянием\\\\
+\textbf{git diff master}\\смотрим изменения\\\\
+\textbf{git push origin -\--delete <имя\_ветки>}\\удалить ветку с удаленного репозитория\\\\
+\textbf{git rebase <имя\_ветки>}\\тоже самое что и git merge, но только история коммитов отображается по другому\\\\
+\textbf{git request-pull origin/master myfork}\\запрос на включение коммитов в удаленный реп "origin/master" с ветки "myfork"\\\\
+\textbf{git revert -m 1 HEAD}\\отменить последний коммит с фиксацией в истории\\\\
+\textbf{git blame -L 12,22 simplegit.rb}\\посмотреть кто сделал изменения в файле "simplegit.rb" с 12 строки до 22 строки
+
+\section{Git ignore}
+
+Пример файла gitignore\\
+\noindent\rule{\textwidth}{1pt}
+\# - комментарий\\
+*.a - пропускать файлы, заканчивающиеся на ".a"\\
+!lib.a \# - но отслеживать файлы "lib.a", несмотря на пропуск файлов на ".a"\\
+/TODO - игнорировать только корневой файл "TODO", а не файлы вида "subdir/TODO"\\
+build/ - игнорировать все файлы в папке "build/"\\
+doc/*.txt - игнорировать "doc/notes.txt", но не "doc/server/arch.txt"\\
+\noindent\rule{\textwidth}{1pt}
+\href{https://github.com/github/gitignore}{https://github.com/github/gitignore} - здесь можно посмотреть различные варианты настройки файла .gitignore
+
+\end{document}
