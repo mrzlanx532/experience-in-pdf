@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12px]{report}
+\documentclass[a4paper, 12px]{article}
 
 \usepackage{cmap}% поиск в PDF
 \usepackage[T2A]{fontenc} % кодировка
@@ -27,16 +27,16 @@
 \tableofcontents{}
 \clearpage 
 
-\chapter{Git commands}
+\section{Git commands}
 
-\section{Git common's commands}
+\subsection{Git common's commands}
 
 
 \textbf{git help <команда>}\\открывает документацию по команде\\\\
 \textbf{git init}\\инициализация git-репозитория
 
 
-\section{Git config}
+\subsection{Git config}
 
 \textbf{git config -\--global core.editor *редактор кода*}\\ установка стандартного редактора кода\\\\
 \textbf{git config -\--list}\\список всех настроек локально (или глобально -\--global)\\\\
@@ -44,30 +44,30 @@
 \textbf{git config -\--global alias.co 'checkout -b'}\\создание краткого алияса "co"\ c параметрами\\\\
 \textbf{git config core.fileMode false}\\выключить отслеживания за ПРАВАМИ ФАЙЛА
 
-\section{Git status}
+\subsection{Git status}
 
 \textbf{git status}\\проверка на существование измененных файлов\\\\
 \textbf{git status -s (-\--short)}\\краткий вывод состояния файлов
 
-\section{Git add}
+\subsection{Git add}
 
 \textbf{git add *}\\Добавить все файлы в индексацию\\\\
 \textbf{git add <file>}\\Добавить <file> в индексацию
 
-\section{Git clone}
+\subsection{Git clone}
 
 \textbf{git clone https://github.com/libgit2/libgit2.git}
 \\клонирование репозитория\\\\
 \textbf{git clone <url>}\\клонировать репозиторий\\\\
 \textbf{git clone -o <локальное\_название\_источника>}\\склонировать репозиторий, и дать источнику имя <локальное\_название\_источника>
 
-\section{Git diff}
+\subsection{Git diff}
 
 \textbf{git diff}\\посмотреть изменение файлов в консоли до индексации\\\\
 \textbf{git diff -\--cached}\\покажет проиндексированные изменения\\\\
 \textbf{git diff -\--staged}\\что из проиндексированного войдет в следующий коммит, воспользуйтесь командой
 
-\section{Git log}
+\subsection{Git log}
 
 
 \textbf{git log}\\показать все последние коммиты\\\\
@@ -78,7 +78,7 @@
 \textbf{gitlog -\--graph}\\удобное представление логов\\\\
 \textbf{git log -\--relative-date}\\относительная дата коммита (35 минут назад)
 
-\section{Git branch}
+\subsection{Git branch}
 
 \textbf{git branch -d <имя\_ветки>}\\Удалить локальную ветку\\\\
 \textbf{git branch <имя\_локальной\_ветки>}\\создать локальную ветку\\\\
@@ -86,14 +86,14 @@
 \textbf{git branch -u <удаленная\_ветка>}\\начать отслеживать удаленную ветку с текущей\\\\
 \textbf{git branch -vv}\\показать информацию о ветках и за чем они следят
 
-\section{Git remote}
+\subsection{Git remote}
 
 \textbf{git remote -v}\\посмотреть подключенный удаленный источник\\\\
 \textbf{git remote add <локальное\_название\_источника> <url>}\\добавить новый источник\\\\
 \textbf{git remote rename <старое\_имя\_уд.\_реп> <новое\_имя\_уд.\_реп>}\\переименовать удаленный источник\\\\
 \textbf{git remote rm <имя\_уд.\_реп>}\\удалить ссылку на удаленный реп
 
-\section{Git stash}
+\subsection{Git stash}
 
 \textbf{git stash}\\убрать в стэш изменения\\\\\\
 \textbf{git stash list}\\показать список изменений в стэшэ\\\\
@@ -106,7 +106,7 @@
 \textbf{git stash show stash@\{0\}}\\
 показать файлы в последнем стеше
 
-\section{Git merge\textbackslash mergetool}
+\subsection{Git merge\textbackslash mergetool}
 
 \textbf{git merge <название\_ветки>}\\слить текущую ветку с <название\_ветки>\\\\
 \textbf{git merge -\--abort}\\отменить слияние (например при конфликте)\\\\
@@ -115,20 +115,20 @@
 \textbf{git mergetool}\\открыть редактор по умолчанию для разрешения конфликта\\\\
 \textbf{git mergetool -\--tool=<название\_утилиты>}\\открыть редактор <редактор> для разрешения конфлита
 
-\section{Git rm\textbackslash mv}
+\subsection{Git rm\textbackslash mv}
 
 \textbf{git rm <файл>}\\удаляет файл и вносит в индексацию `удаление` этого файла\\\\
 \textbf{git rm -\--cached <файл>}\\удаляет из индекса, но физически не удаляет его\\\\\\
 \textbf{git mv <изначальный\_файл> <новое\_название\_файла>}\\
 переименование с индексацией
 
-\section{Git checkout}
+\subsection{Git checkout}
 
 \textbf{git checkout <имя\_ветки>}\\переключится на ветку\\\\
 \textbf{git checkout -b <имя\_новой\_ветки>}\\создать ветку и переключится на нее\\\\
 \textbf{git checkout -\-- <файл>}\\Вернуть <файл> к дефолту. (Убрать внесенные изменения)
 
-\section{Git others}
+\subsection{Git others}
 
 \textbf{git push origin -\--delete <имя\_ветки>}\\Удалить ветку из удаленного репозитория\\\\
 \textbf{git commit -a}\\пропуск индексирования и сразу коммит\\\\
@@ -143,7 +143,7 @@
 \textbf{git revert -m 1 HEAD}\\отменить последний коммит с фиксацией в истории\\\\
 \textbf{git blame -L 12,22 simplegit.rb}\\посмотреть кто сделал изменения в файле "simplegit.rb" с 12 строки до 22 строки
 
-\section{Git ignore}
+\subsection{Git ignore}
 
 Пример файла gitignore\\
 \noindent\rule{\textwidth}{1pt}
@@ -155,5 +155,49 @@ build/ - игнорировать все файлы в папке "build/"\\
 doc/*.txt - игнорировать "doc/notes.txt", но не "doc/server/arch.txt"\\
 \noindent\rule{\textwidth}{1pt}
 \href{https://github.com/github/gitignore}{https://github.com/github/gitignore} - здесь можно посмотреть различные варианты настройки файла .gitignore
+
+\section{PostgreSQL}
+
+Описание установки и начала работы.
+\subsection{Установка}
+
+Установка клиента и службы: \\
+\textbf{sudo apt-get install postgresql postgresql-contrib}
+
+\subsection{Авторизация}
+
+Авторизоваться под пользователем postgres: \\
+\textbf{sudo -i -u <postgres>} \\\\
+Войти в клиент-консоль postgres: \\
+\textbf{sudo -i -u <postgres> psql}
+
+\subsection{Роли}
+
+Создание пользователя интерактивно \\
+\textbf{createuser -\--interactive} 
+
+\subsection{БД}
+
+Создание БД\\
+\textbf{createdb <db\_name>}
+
+\subsection{Меняем пароль авторизации в клиент-консоли}
+Комадна: \\
+\textbf{ALTER USER <mrzlanx532> with PASSWORD 'password';}
+
+\subsection{PHP7}
+
+Установка Postgres-PDO для PHP7.*\\
+\textbf{sudo apt-get install 7.*-pgsql}
+
+\subsection{Laravel .env}
+
+\textit{DB\_CONNECTION=pgsql\\
+	DB\_HOST=localhost\\
+	DB\_PORT=5432\\
+	DB\_DATABASE=db\\
+	DB\_USERNAME=username\\
+	DB\_PASSWORD=password\\}
+
 
 \end{document}
