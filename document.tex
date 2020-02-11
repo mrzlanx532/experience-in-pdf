@@ -158,46 +158,69 @@ doc/*.txt - игнорировать "doc/notes.txt", но не "doc/server/arch
 
 \section{PostgreSQL}
 
-Описание установки и начала работы.
-\subsection{Установка}
-
 Установка клиента и службы: \\
-\textbf{sudo apt-get install postgresql postgresql-contrib}
 
-\subsection{Авторизация}
-
+\textbf{sudo apt-get install postgresql postgresql-contrib}\\\\
 Авторизоваться под пользователем postgres: \\
+
 \textbf{sudo -i -u <postgres>} \\\\
 Войти в клиент-консоль postgres: \\
-\textbf{sudo -i -u <postgres> psql}
 
-\subsection{Роли}
-
+\textbf{sudo -i -u <postgres> psql}\\\\
 Создание пользователя интерактивно \\
-\textbf{createuser -\--interactive} 
 
-\subsection{БД}
-
+\textbf{createuser -\--interactive}  \\\\
 Создание БД\\
-\textbf{createdb <db\_name>}
 
-\subsection{Меняем пароль авторизации в клиент-консоли}
-Комадна: \\
-\textbf{ALTER USER <mrzlanx532> with PASSWORD 'password';}
+\textbf{createdb <db\_name>}\\\\
+Меняем пароль авторизации в клиент-консоли: \\
 
-\subsection{PHP7}
-
+\textbf{ALTER USER <mrzlanx532> with PASSWORD 'password';}\\\\
 Установка Postgres-PDO для PHP7.*\\
-\textbf{sudo apt-get install 7.*-pgsql}
 
-\subsection{Laravel .env}
+\textbf{sudo apt-get install 7.*-pgsql}\\\\
+\textbf{Laravel .env}\\\\
+\textit{	
+DB\_CONNECTION=pgsql\\
+DB\_HOST=localhost\\
+DB\_PORT=5432\\
+DB\_DATABASE=db\\
+DB\_USERNAME=username\\
+DB\_PASSWORD=password\\}
 
-\textit{DB\_CONNECTION=pgsql\\
-	DB\_HOST=localhost\\
-	DB\_PORT=5432\\
-	DB\_DATABASE=db\\
-	DB\_USERNAME=username\\
-	DB\_PASSWORD=password\\}
+\section{Regular Expresions (RegExp)}
 
+\textbf{Паттерн | Пример} \\\\
+$\hat{}$ = не \\
+duck = "duck"\\
+p|tyre = "p" или "tyre"\\
+(p|t)yre = "pyre" или "tyre"\\
+$[$dtl$]$uck = "duck", "tuck", "luck" \\
+$[$ $\hat{}$ t]uck = все буквы вначале, кроме t. "tuck" нельзя, "buck" можно \\
+$[$a-z$]$ = диапазон от a до z \\
+$[$A-Z$]$ = диапазон от A до Z \\
+$[$0-9$]$ = диапазон от 0 до 9 \\
+$[$0-9$]$+ = бесконечное количество 8784655351518484213548 \\
+$[$0-9$]$\{11\} = 11 символов 89645327312 \\
+$[$0-9$]$\{5,7\} = 5-7 символов 89645327312 \\
+$[$0-9$]$\{5, \} = минимум 5 символов 89645327312 \\\\
+\textbf{Мета символы}\\\\
+$\backslash$d = [0-9] \\
+$\backslash$w = [a-zA-Z0-9\_] \\
+$\backslash$s = пробелы, табы, отступы \\
+$\backslash$t = любой символ табуляции \\\\
+\textit{Пример}\\\\
+$\backslash$d\{3\}$\backslash$s$\backslash$w\{5\} = 123 hello \\\\
+\textbf{Особые символы} \\
++ - совпадение встречается один или более раз \\
+? - символ либо есть, либо нет \\
+. - абсолютно любой символ \\
+* - совпадение встречается ноль или более раз \\\\
+\textit{Пример}\\\\
+hello? = hell, hello \\\\
+\textbf{Начало и конец шаблона} \\\\
+$\hat{}$ [a-z]\{5\} = davidgtropgrpk (подойдет только david без продолжения) $\hat{}$ это начало \\
+$[$a-z$]$\{5\}\$ = fefefewwwww (подойдет только wwwww без начала) \$ это конец \\
+$\hat{}$ $[$a-z$]$\{5\}\$ = david (нельзя ни в начале ничего добавить, ни в конце) \\
 
 \end{document}
