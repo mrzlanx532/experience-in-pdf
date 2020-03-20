@@ -223,4 +223,43 @@ $\hat{}$ [a-z]\{5\} = davidgtropgrpk (подойдет только david без
 $[$a-z$]$\{5\}\$ = fefefewwwww (подойдет только wwwww без начала) \$ это конец \\
 $\hat{}$ $[$a-z$]$\{5\}\$ = david (нельзя ни в начале ничего добавить, ни в конце) \\
 
+\section{Python}
+
+\subsection{Установка virtualenv и зависимостей Python} 
+1. \textbf{py -m pip install virtualenv} - установка \textbf{virtualenv} в \textbf{pip-packages} \\
+2. \textbf{mkdir python\_env \&\& cd python\_env} - создаем папку под окружения python и переходим в нее \\
+3. \textbf{virtualenv <название\_проекта>} (e.g. "virtualenv django\_proj") - создаем переменную окружения под название "django\_proj"\\
+4. \textbf{source <название\_проекта>/bin/activate} - заходим включаем окружение\\
+5. \textbf{pip install <название\_модуля>} (e.g. \textbf{"pip install Django"}) - устанавливаем модули в окружение [OPTIONAL]\\
+6. \textbf{pip freeze -\--local > req.txt} - сохраняем зависимости локального окружения в файл\\
+7. \textbf{deactivate} - выйти из окружения
+\subsection{Деплой проекта питона с зависимостями из файла используя virtualenv}
+1. \textbf{virtualenv -p /path\_to\_python\_exe <название\_переменной\_окружения>} (e.g \textbf{virtualenv -p /usr/bin/python3.8 py3.8-django}) - создаем переменную окружения из зависимостей, используя версию питона \\
+2. \textbf{source py3.8-django/bin/activate} - заходим в п.о. \\
+3. \textbf{pip install -r req.txt} - ставим зависимости в переменную окружения
+\subsection{Установка PyQt5-designer на Linux} 
+1. sudo apt-get install python3-pyqt5 \\
+2. sudo apt-get install python3-pyqt5.qtsql\\
+3. sudo apt-get install qttools5-dev-tools
+
+\subsection{Запуск PyQt5-designer как приложение}
+1. Создайте командой файл на рабочем столе \textbf{'touch "qt-designer.desktop"'} \\
+2. Откройте файл в редакторе и внесите следующее содержимое:\\\\
+\textit{\#!/usr/bin/env xdg-open}\\
+\textit{[Desktop Entry]}\\
+\textit{Name=Qt5 Designer}\\
+\textit{Icon=/usr/share/applications/qt5-designer\_.png}\\
+\textit{Exec=/usr/lib/x86\_64-linux-gnu/qt5/bin/designer}\\
+\textit{Type=Application}\\
+\textit{Categories=Application}\\
+\textit{Terminal=false}\\
+\textit{StartupNotify=true}\\
+\textit{Actions=NewWindow}\\
+\textit{Name[en\_US]=Qt5 Designer}\\\\
+\textit{[Desktop Action NewWindow]}\\
+\textit{Name=Open a New Window}\\
+\textit{Exec=/usr/lib/x86\_64-linux-gnu/qt5/bin/designer}\\\\
+Если необходима иконка приложения, добавьте созданную иконку в "/usr/share/applications"
+
+
 \end{document}
